@@ -30,3 +30,22 @@ print(sqrt(260, 5))
 print(fixed_point(partial(sqrt_p,260), 5))
 print(new_sqrt(260, 5))
 
+
+def average(*args):
+    return sum(args) / len(args)
+
+def sqrt(x):
+    def improve(guess):
+        return average(guess, x / guess)
+
+    def is_good_enough(guess):
+        return abs(guess ** 2 - x ) < 0.0001
+
+    def try_(guess):
+        if is_good_enough(guess):
+            return guess
+        return try_(improve(guess))
+
+    return try_(1)
+
+print(sqrt(260))
