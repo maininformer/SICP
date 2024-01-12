@@ -34,6 +34,10 @@ print(new_sqrt(260, 5))
 def average(*args):
     return sum(args) / len(args)
 
+# Notes: Beautiful abstraction, the signature is cleaner, for all of them, because they all have access to the
+# local x. And the trying is abstracted away from the user; the user shouldn't care about a guess, or how our
+# algorithm is implemented. Otherwise we are leaking abstraction. If our algorithm changes maybe the user needs
+# to input something else.
 def sqrt(x):
     def improve(guess):
         return average(guess, x / guess)
